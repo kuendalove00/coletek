@@ -1,0 +1,20 @@
+{
+    "name": "kuenda/teste-coletek",
+    "type": "psr-4",
+    "autoload": {
+        "psr-4": {
+            "app\\": "app",
+            "content\\": "content",
+            "database\\": "database",
+            "routes\\": "routes",
+            "scripts\\": "scripts"
+        }
+    },
+    "authors": [
+        {
+            "name": "kuendalove00",
+            "email": "kuendalove14@gmail.com"
+        }
+    ],
+    "require": {}
+}
