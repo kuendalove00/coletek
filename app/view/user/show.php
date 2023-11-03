@@ -84,29 +84,30 @@
                     </div>
                 </form>
 
-                <ul class="list-unstyled ps-0">
-                    <?php
-                    
-                    $userSectors = $array[2];
-                    if ($userSectors):
-                        foreach ($userSectors as $userSector):
-                            var_dump($userSector);?>
-                            <li><div class="form-check">
-                                    <input class="form-check-input" value="<?php echo $userSector->getSectorId(); ?>" type="checkbox" id="gridCheck">
-                                    <label class="form-check-label" for="gridCheck">
-                                        <?php echo $userSector->getSectorId(); ?>
-                                    </label>
-                                </div>
-                            </li>
-                            <?php
-                        endforeach;
-                    endif;
-                    ?>
-                </ul>
-                <div class="mb-3 d-flex justify-content-center">
-                    <button type="button" class="btn btn-danger">Desvincular</button>
-                </div>
-
+                <form action="./desvincular" method="post">
+                    <input type="hidden" name="user_id" value="<?php echo $user->getId(); ?>">
+                    <ul class="list-unstyled ps-0">
+                        <?php
+                        $userSectors = $array[2];
+                        if ($userSectors):
+                            foreach ($userSectors as $userSector):
+                                ?>
+                                <li><div class="form-check">
+                                        <input class="form-check-input" name="sector_id" value="<?php echo $userSector->getSectorId(); ?>" type="radio" id="gridCheck">
+                                        <label class="form-check-label" for="gridCheck">
+                                            <?php echo $userSector->getSectorId(); ?>
+                                        </label>
+                                    </div>
+                                </li>
+                                <?php
+                            endforeach;
+                        endif;
+                        ?>
+                    </ul>
+                    <div class="mb-3 d-flex justify-content-center">
+                        <button type="submit" class="btn btn-danger">Desvincular</button>
+                    </div>
+                </form>
             </div>
 
 

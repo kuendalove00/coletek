@@ -6,8 +6,6 @@ require "./routes/router.php";
 try{
     $uri = parse_url($_SERVER["REQUEST_URI"])["path"];
     $request = $_SERVER["REQUEST_METHOD"];
-    
-    var_dump($routes[$request]);
 
     if(!isset($routes[$request]))
     {

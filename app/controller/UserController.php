@@ -28,7 +28,6 @@ class UserController{
     public function show($id) {
         $user = $this->userServices->getUser($id);
         $sectors = $this->sectorServices->getAllSectors();
-        
         $userSectors = $this->userSectorServices->getUserSectors($id);
         return Controller::view("user/show",[$user, $sectors, $userSectors]);
     }
@@ -44,7 +43,7 @@ class UserController{
         $sector = $this->userSectorServices->removeUserSector($params); 
         $data = new stdClass();
         $data->id = $params->user_id;
-        return $this->show(["id" => $params->user_id]);
+        //return $this->show($data);
     }
     
     public function create() {
@@ -57,9 +56,7 @@ class UserController{
     }
     
     public function edit($id) {
-        var_dump($id);
         $user = $this->userServices->getUser($id);
-        var_dump($user);
         return Controller::view("user/edit",[$user]);
     }
     

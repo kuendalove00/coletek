@@ -1,20 +1,11 @@
 <?php
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/PHPClass.php to edit this template
- */
-
 namespace app\Repositories;
 use database\DbConnection;
 use PDOException;
 use app\Model\UserSectors;
 
-/**
- * Description of UserSectorsRepository
- *
- * @author ndonge
- */
+
 class UserSectorsRepository {
     
     private $db;
@@ -25,7 +16,6 @@ class UserSectorsRepository {
     
     public function selectById($data) {
         $sectors = Array();
-        var_dump("Olha a data",$data);
         $stmt = $this->db->prepare("SELECT * FROM user_sectors WHERE user_id=:id");
         $stmt->bindparam(":id", $data->id);
         $stmt->execute();
@@ -59,7 +49,7 @@ class UserSectorsRepository {
     public function delete($data) {
         try {
             $stmt = $this->db->prepare("DELETE FROM user_sectors WHERE sector_id=:id");
-            $stmt->bindparam(":id", $data->id);
+            $stmt->bindparam(":id", $data->sector_id);
             $stmt->execute();
             return true;
         } catch (PDOException $e) {
