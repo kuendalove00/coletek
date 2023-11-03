@@ -10,8 +10,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    <link href="../../../content/css/custom/sidebars.css" rel="stylesheet">
-    <title>Usuario | Cadastro</title>
+     <link href="./sidebars.css" rel="stylesheet">   
+    <title>Usuarios | Cadastro</title>
 </head>
 
 <body>
@@ -36,9 +36,8 @@
                     </button>
                     <div class="collapse show" id="home-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded">Listar</a></li>
-                            <li><a href="#" class="link-dark rounded">Cadastrar</a></li>
-                            <li><a href="#" class="link-dark rounded">Setor</a></li>
+                            <li><a href="./usuarios" class="link-dark rounded">Listar</a></li>
+                            <li><a href="./usuarios/criar" class="link-dark rounded">Cadastrar</a></li>
                         </ul>
                     </div>
                 </li>
@@ -49,8 +48,8 @@
                     </button>
                     <div class="collapse" id="dashboard-collapse">
                         <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                            <li><a href="#" class="link-dark rounded">Listar</a></li>
-                            <li><a href="#" class="link-dark rounded">Cadastrar</a></li>
+                            <li><a href="./setores/" class="link-dark rounded">Listar</a></li>
+                            <li><a href="./setores/criar" class="link-dark rounded">Cadastrar</a></li>
                         </ul>
                     </div>
                 </li>
@@ -71,3 +70,6 @@
 </body>
 
 </html>
+
+<?php
+?>

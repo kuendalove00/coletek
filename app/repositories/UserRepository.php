@@ -2,9 +2,9 @@
 
 
 namespace app\Repositories;
-use DbConnection;
+use database\DbConnection;
 use PDOException;
-use Model\User;
+use app\Model\User;
 /**
  * Descrição do UserRepository
  *
@@ -15,7 +15,7 @@ class UserRepository {
     private $db;
     
     function __construct() {
-        $this->db = DbConnection::getInstance();
+        $this->db = DbConnection::getDbInstance();
     }
 
     public function selectAll() {
@@ -30,22 +30,23 @@ class UserRepository {
         return $users;
     }
 
-    public function selectById($id) {
-        $stmt = $this->db->prepare("SELECT * FROM user WHERE id = :id");
-        $stmt->execute(['id' => $id]);
+    public function selectById($data) {
+        $stmt = $this->db->prepare("SELECT * FROM users WHERE id=:id");
+        var_dump($data);
+        $stmt->bindparam(":id", $data->id);
+        $stmt->execute();
         $user = $stmt->fetch();
-
-        return new User($user['id'], $user['nome'], $user['tipo']);
+        return new User($user['id'], $user['name'], $user['email']);
     }
     
     public function insert($data) {
         try {
-            $stmt = $this->db->prepare("INSERT INTO users VALUES(:name, :email)");
-            $stmt->bindparam(":nome", $data["name"]);
-            $stmt->bindparam(":email", $data["email"]);
+            $stmt = $this->db->prepare("INSERT INTO users VALUES(NULL, :name, :email)");
+            var_dump($data);
+            $stmt->bindparam(":name", $data->name);
+            $stmt->bindparam(":email", $data->email);
             $stmt->execute();
-            $id = $this->db->lastInsertId();
-            return $id;
+            return true;
         } catch (PDOException $e) {
             echo $e->getMessage();
             return false;
@@ -55,9 +56,9 @@ class UserRepository {
     public function update($data) {
         try {
             $stmt = $this->db->prepare("UPDATE users SET name=:name, email=:email WHERE id=:id");
-            $stmt->bindparam(":id", $$data["id"]);
-            $stmt->bindparam(":nome", $data["name"]);
-            $stmt->bindparam(":email", $data["email"]);
+            $stmt->bindparam(":id", $data->id);
+            $stmt->bindparam(":name", $data->name);
+            $stmt->bindparam(":email", $data->email);
             $stmt->execute();
             return true;
         } catch (PDOException $e) {
@@ -66,10 +67,10 @@ class UserRepository {
         }
     }
 
-    public function delete($id) {
+    public function delete($data) {
         try {
             $stmt = $this->db->prepare("DELETE FROM users WHERE id=:id");
-            $stmt->bindparam(":id", $id);
+            $stmt->bindparam(":id", $data->id);
             $stmt->execute();
             return true;
         } catch (PDOException $e) {

@@ -1,9 +1,9 @@
 <?php
 
-namespace Model;
+namespace app\Model;
 
 /**
- * Description of User
+ * 
  *
  * @author kuenda
  */

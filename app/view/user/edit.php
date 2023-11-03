@@ -56,17 +56,19 @@
             </ul>
         </div>
         <div class="container-md">
-            <form action="" method="post">
+            <?php $user = $array[0]; ?>
+            <form action="atualizar" method="post">
                 <div class="mb-3">
                     <label for="name" class="form-label">Nome</label>
-                    <input name="name" type="text" class="form-control" id="name" placeholder="Digite o seu nome">
+                    <input name="name" value="<?php echo $user->getName(); ?>" type="text" class="form-control" id="name" placeholder="Digite o seu nome">
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input name="email" type="email" class="form-control" id="email" placeholder="Digite o seu email">
+                    <input name="email" value="<?php echo $user->getEmail(); ?>" type="email" class="form-control" id="email" placeholder="Digite o seu email">
                 </div>
+                <input type="hidden" name="id" value="<?php echo $user->getId(); ?>" />
                 
-                <button type="button" class="btn btn-primary">Cadastrar</button>
+                <button type="submit" class="btn btn-primary">Editar</button>
             </form>
         </div>
          

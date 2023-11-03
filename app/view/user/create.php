@@ -56,7 +56,7 @@
             </ul>
         </div>
         <div class="container-md">
-            <form action="" method="post">
+            <form action="./" method="post">
                 <div class="mb-3">
                     <label for="name" class="form-label">Nome</label>
                     <input name="name" type="text" class="form-control" id="name" placeholder="Digite o seu nome">
@@ -66,7 +66,7 @@
                     <input name="email" type="email" class="form-control" id="email" placeholder="Digite o seu email">
                 </div>
                 
-                <button type="button" class="btn btn-primary">Cadastrar</button>
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
             </form>
         </div>
          

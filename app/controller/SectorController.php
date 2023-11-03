@@ -1,22 +1,11 @@
 <?php
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Scripting/PHPClass.php to edit this template
- */
-
 namespace app\Controller;
 
 use app\Services\SectorServices;
 
-/**
- * Description of SectorController
- *
- * @author ndonge
- */
 class SectorController {
      private $sectorServices = NULL;
-
 
     public function __construct() {
         $this->sectorServices = new SectorServices();
@@ -24,34 +13,34 @@ class SectorController {
     
     public function index() {
         $sectors = $this->sectorServices->getAllSectors();
-        return $sectors;
-    }
-    
-    public function show($id) {
-        $sector = $this->sectorServices->getSector($id);
-        return $sector;
+        var_dump($sectors);
+        return Controller::view("sector/list",[$sectors]);
     }
     
     public function create() {
-        return;
+        return Controller::view("sector/create");
     }
     
     public function store($params) {
-        $sector = $this->sectorServices->addSector($params);
-        return $sector;
+        $sector = $this->sectorServices->addSector($params); 
+        return $this->create();
     }
     
-    public function edit($params) {
-        return;
+    public function edit($id) {
+        var_dump($id);
+        $user = $this->sectorServices->getSector($id);
+        var_dump($user);
+        return Controller::view("sector/edit",[$user]);
     }
     
     public function update($params) {
         $sector = $this->sectorServices->updateSector($params);
-        return $sector;
+        
+        return $this->edit($params);
     }
     
     public function delete($id) {
         $sector = $this->sectorServices->removeSector($id);
-        return $sector;
+        return $this->index();
     }
 }

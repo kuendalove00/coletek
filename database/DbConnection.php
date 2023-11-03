@@ -1,6 +1,9 @@
 <?php
 
+namespace database;
 use PDO;
+use PDOException;
+
 
 class DbConnection {
 
@@ -10,7 +13,8 @@ class DbConnection {
 
         if (!isset(self::$instance)) {
             try {
-                self::$instance = new PDO(`mysql:host=${DB_HOST};dbname=${DB_NAME};`, DB_USER, DB_PASSWORD);
+                var_dump(getenv("DB_HOST"));
+                self::$instance = new PDO("mysql:host=localhost;dbname=coltek;", "root", "");
                 self::$instance->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             } catch (PDOException $ex) {
                 $ex->getMessage();

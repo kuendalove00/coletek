@@ -1,9 +1,9 @@
 <?php
 
-namespace Model;
+namespace app\Model;
 
 /**
- * Descrição do Sector
+ * 
  *
  * @author kuenda
  */

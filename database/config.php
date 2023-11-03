@@ -1,6 +1,6 @@
 <?php
 
-$GLOBALS["DB_HOST"] = "localhost";
-$GLOBALS["DB_NAME"] = "coltek";
-$GLOBALS["DB_USER"] = "root";
-$GLOBALS["DB_PASSWORD"] = "";
+putenv('DB_HOST="localhost"');
+putenv('DB_NAME="coltek"');
+putenv('DB_USER="root"');
+putenv('DB_PASSWORD=""');
