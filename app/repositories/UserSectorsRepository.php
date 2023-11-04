@@ -1,6 +1,7 @@
 <?php
 
 namespace app\Repositories;
+
 use database\DbConnection;
 use PDOException;
 use app\Model\UserSectors;

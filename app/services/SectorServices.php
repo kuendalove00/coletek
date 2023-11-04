@@ -1,6 +1,7 @@
 <?php
 
 namespace app\Services;
+
 use app\Repositories\SectorRepository;
 use app\Services\Interfaces\ISectorServices;
 

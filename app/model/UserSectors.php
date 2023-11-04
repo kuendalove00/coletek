@@ -2,10 +2,6 @@
 
 namespace app\Model;
 
-/**
- *
- * @author ndonge
- */
 class UserSectors {
     private int $user_id;
     private int $sector_id;

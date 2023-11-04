@@ -1,6 +1,7 @@
 <?php
 
 namespace app\Services;
+
 use app\Repositories\UserRepository;
 use app\Services\Interfaces\IUserServices;
 

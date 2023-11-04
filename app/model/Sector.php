@@ -2,11 +2,6 @@
 
 namespace app\Model;
 
-/**
- * 
- *
- * @author kuenda
- */
 class Sector {
     private int $id;
     private string $name;
