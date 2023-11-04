@@ -26,7 +26,6 @@ class SectorController {
     }
     
     public function edit($id) {
-        var_dump($id);
         $user = $this->sectorServices->getSector($id);
         return Controller::view("sector/edit",[$user]);
     }
