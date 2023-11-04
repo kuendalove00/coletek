@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-private xmlns="http://www.netbeans.org/ns/project-private/1">
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+        <group>
+            <file>file:/C:/xampp/htdocs/testeColtek/app/view/user/show.php</file>
+            <file>file:/C:/xampp/htdocs/testeColtek/app/controller/Controller.php</file>
+            <file>file:/C:/xampp/htdocs/testeColtek/app/repositories/UserSectorsRepository.php</file>
+            <file>file:/C:/xampp/htdocs/testeColtek/public/scripts/js/custom/alert.js</file>
+            <file>file:/C:/xampp/htdocs/testeColtek/app/view/sector/edit.php</file>
+            <file>file:/C:/xampp/htdocs/testeColtek/app/view/sector/list.php</file>
+            <file>file:/C:/xampp/htdocs/testeColtek/app/view/sector/create.php</file>
+            <file>file:/C:/xampp/htdocs/testeColtek/composer.json</file>
+            <file>file:/C:/xampp/htdocs/testeColtek/app/view/index.php</file>
+            <file>file:/C:/xampp/htdocs/testeColtek/app/view/user/edit.php</file>
+            <file>file:/C:/xampp/htdocs/testeColtek/app/controller/PageController.php</file>
+            <file>file:/C:/xampp/htdocs/testeColtek/database/DbConnection.php</file>
+            <file>file:/C:/xampp/htdocs/testeColtek/app/view/user/list.php</file>
+            <file>file:/C:/xampp/htdocs/testeColtek/app/controller/SectorController.php</file>
+            <file>file:/C:/xampp/htdocs/testeColtek/app/controller/UserController.php</file>
+            <file>file:/C:/xampp/htdocs/testeColtek/app/model/Sector.php</file>
+            <file>file:/C:/xampp/htdocs/testeColtek/app/services/UserSectorsServices.php</file>
+            <file>file:/C:/xampp/htdocs/testeColtek/app/model/User.php</file>
+            <file>file:/C:/xampp/htdocs/testeColtek/app/services/UserServices.php</file>
+            <file>file:/C:/xampp/htdocs/testeColtek/index.php</file>
+            <file>file:/C:/xampp/htdocs/testeColtek/public/scripts/js/custom/functions.js</file>
+            <file>file:/C:/xampp/htdocs/testeColtek/app/repositories/UserRepository.php</file>
+            <file>file:/C:/xampp/htdocs/testeColtek/app/model/UserSectors.php</file>
+            <file>file:/C:/xampp/htdocs/testeColtek/app/services/SectorServices.php</file>
+            <file>file:/C:/xampp/htdocs/testeColtek/app/repositories/SectorRepository.php</file>
+            <file>file:/C:/xampp/htdocs/testeColtek/app/view/user/create.php</file>
+            <file>file:/C:/xampp/htdocs/testeColtek/routes/router.php</file>
+            <file>file:/C:/xampp/htdocs/testeColtek/.htaccess</file>
+        </group>
+    </open-files>
+</project-private>

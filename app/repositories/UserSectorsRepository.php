@@ -4,9 +4,10 @@ namespace app\Repositories;
 use database\DbConnection;
 use PDOException;
 use app\Model\UserSectors;
+use app\Repositories\Interfaces\IUserSectorsRepository;
 
 
-class UserSectorsRepository {
+class UserSectorsRepository implements IUserSectorsRepository{
     
     private $db;
     
@@ -16,7 +17,7 @@ class UserSectorsRepository {
     
     public function selectById($data) {
         $sectors = Array();
-        $stmt = $this->db->prepare("SELECT * FROM user_sectors WHERE user_id=:id");
+        $stmt = $this->db->prepare("CALL SelectSectorsByUser(:id);");
         $stmt->bindparam(":id", $data->id);
         $stmt->execute();
         $result = $stmt->fetchAll();
@@ -26,30 +27,36 @@ class UserSectorsRepository {
         }
            
         foreach ($result as $sector) {
-            $sectors[] = new UserSectors($sector['user_id'], $sector['sector_id']);
+            $sectors[] = new UserSectors($sector['user_id'], $sector['sector_id'], $sector['name']);
         }
         
         return $sectors;
     }
     
-    public function insert($data) {
+    public function insert($user_id,$sector_id) {
+        
         try {
-            $stmt = $this->db->prepare("INSERT INTO user_sectors VALUES(:sector_id, :user_id)");
-            var_dump($data);
-            $stmt->bindparam(":user_id", $data->user_id);
-            $stmt->bindparam(":sector_id", $data->sector_id);
+            $stmt = $this->db->prepare("CALL LinkSectorsToUser(:sector_id,:user_id);");
+            $stmt->bindparam(":user_id", $user_id);
+            $stmt->bindparam(":sector_id", $sector_id);
             $stmt->execute();
             return true;
         } catch (PDOException $e) {
-            echo $e->getMessage();
+            if (str_contains($e, '1062')) {
+                echo '<script>alert("Dados Duplicados: Usuário já está vinculado ao setor");</script>';
+            } else {
+               echo $e->getMessage();
+            }
+           
             return false;
         }
     }
     
-    public function delete($data) {
+    public function delete($user_id,$sector_id) {
         try {
-            $stmt = $this->db->prepare("DELETE FROM user_sectors WHERE sector_id=:id");
-            $stmt->bindparam(":id", $data->sector_id);
+            $stmt = $this->db->prepare("CALL UnlinkSectorsToUser (:sector_id,:user_id);");
+            $stmt->bindparam(":user_id", $user_id);
+            $stmt->bindparam(":sector_id", $sector_id);
             $stmt->execute();
             return true;
         } catch (PDOException $e) {

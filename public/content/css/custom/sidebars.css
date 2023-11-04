@@ -1,5 +1,4 @@
 body {
-    
     min-height: -webkit-fill-available;
     min-height: 100vh;
   }
@@ -10,8 +9,7 @@ body {
   
   main {
     display: flex;
-    flex-wrap: nowrap;
-    
+    flex-wrap: nowrap; 
     height: -webkit-fill-available;
     height: 100vh;
     max-height: 100vh;

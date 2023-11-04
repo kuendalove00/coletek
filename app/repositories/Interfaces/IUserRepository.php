@@ -1,22 +1,18 @@
 <?php
 
-
 namespace app\Repositories\Interfaces;
 
-/**
- * Description of IUserRepository
- *
- * @author kuenda
- */
 interface IUserRepository {
     
     public function selectAll();
 
-    public function selectById($id);
+    public function selectById($data);
+    
+    public function searchBySector($data);
 
-    public function insert($name, $email);
-     
-     public function update($id, $nome, $email);
+    public function insert($data);
+    
+    public function update($data);
 
-     public function delete($id);
+    public function delete($data);
 }

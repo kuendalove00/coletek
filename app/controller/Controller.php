@@ -5,10 +5,6 @@ namespace app\Controller;
 
 use Exception;
 
-/**
- *
- * @author kuenda
- */
 class Controller {
     
     public static function view(string $view, array $data = [])

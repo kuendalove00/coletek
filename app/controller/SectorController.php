@@ -13,7 +13,6 @@ class SectorController {
     
     public function index() {
         $sectors = $this->sectorServices->getAllSectors();
-        var_dump($sectors);
         return Controller::view("sector/list",[$sectors]);
     }
     
@@ -22,25 +21,23 @@ class SectorController {
     }
     
     public function store($params) {
-        $sector = $this->sectorServices->addSector($params); 
+        $this->sectorServices->addSector($params); 
         return $this->create();
     }
     
     public function edit($id) {
         var_dump($id);
         $user = $this->sectorServices->getSector($id);
-        var_dump($user);
         return Controller::view("sector/edit",[$user]);
     }
     
     public function update($params) {
-        $sector = $this->sectorServices->updateSector($params);
-        
+        $this->sectorServices->updateSector($params);
         return $this->edit($params);
     }
     
     public function delete($id) {
-        $sector = $this->sectorServices->removeSector($id);
+        $this->sectorServices->removeSector($id);
         return $this->index();
     }
 }

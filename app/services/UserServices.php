@@ -2,13 +2,9 @@
 
 namespace app\Services;
 use app\Repositories\UserRepository;
+use app\Services\Interfaces\IUserServices;
 
-/**
- * Description of UserServices
- *
- * @author kuenda
- */
-class UserServices {
+class UserServices implements IUserServices{
    
     private $userRepo = NULL;
 
@@ -20,20 +16,35 @@ class UserServices {
         return $this->userRepo->selectAll();
     }
     
+    public function searchUsersBySector($data) {
+        return $this->userRepo->searchBySector($data);
+    }
+    
     public function getUser($id) {
         return $this->userRepo->selectById($id);
     }
     
     public function addUser($data) {
-        return $this->userRepo->insert($data);
+        $res = $this->userRepo->insert($data);
+        if($res){
+            echo '<script>alert("Usuário cadastrado com sucesso");</script>';
+        }
+        return;
     }
     
     public function updateUser($data) {
-        return $this->userRepo->update($data);
+        $res = $this->userRepo->update($data);
+        if($res){
+            echo '<script>alert("Usuário atualizado com sucesso");</script>';
+        }
+        return;
     }
     
     public function removeUser($id) {
-        return $this->userRepo->delete($id);
-    }
-    
+        $res = $this->userRepo->delete($id);
+        if($res){
+            echo '<script>alert("Usuário excluído com sucesso");</script>';
+        }
+        return;
+    }   
 }

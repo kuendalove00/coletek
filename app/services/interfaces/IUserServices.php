@@ -2,12 +2,11 @@
 
 namespace app\Services\Interfaces;
 
-/**
- *
- * @author kuenda
- */
 interface IUserServices {
+    
     public function getAllUsers();
+    
+    public function searchUsersBySector($data);
     
     public function getUser($id);
     

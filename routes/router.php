@@ -4,20 +4,15 @@ function loadRoute(string $controller, string $action) {
     try {
         $controllerNamespace = "app\\controller\\{$controller}";
 
-        var_dump($controllerNamespace);
-        
         if (!class_exists($controllerNamespace)) {
             throw new Exception("O controller {$controller} não existe");
         }
 
         $controllerInstance = new $controllerNamespace();
-        
-         
 
         if (!method_exists($controllerInstance, $action)) {
             throw new Exception("O método {$action} não existe no controller {$controller}");
         }
-        
 
         $controllerInstance->$action((object) $_REQUEST);
     } catch (Exception $ex) {
@@ -27,25 +22,26 @@ function loadRoute(string $controller, string $action) {
 
 $routes = [
     'GET' => [
-        '/testeColtek/' => fn() => loadRoute('PageController', "index"),
-        '/testeColtek/usuarios' => fn() => loadRoute('UserController', "index"),
-        '/testeColtek/usuarios/index' => fn() => loadRoute('UserController', "index"),
-        '/testeColtek/usuarios/criar' => fn() => loadRoute('UserController', "create"),
-        '/testeColtek/usuarios/editar' => fn() => loadRoute('UserController', "edit"),
-        '/testeColtek/usuarios/ver' => fn() => loadRoute('UserController', "show"),
-        '/testeColtek/setores/' => fn() => loadRoute('SectorController', "index"),
-        '/testeColtek/setores/index' => fn() => loadRoute('SectorController', "index"),
-        '/testeColtek/setores/criar' => fn() => loadRoute('SectorController', "create"),
-        '/testeColtek/setores/editar' => fn() => loadRoute('SectorController', "edit"),
+        '/coletek/' => fn() => loadRoute('PageController', "index"),
+        '/coletek/usuarios' => fn() => loadRoute('UserController', "index"),
+        '/coletek/usuarios/index' => fn() => loadRoute('UserController', "index"),
+        '/coletek/usuarios/criar' => fn() => loadRoute('UserController', "create"),
+        '/coletek/usuarios/editar' => fn() => loadRoute('UserController', "edit"),
+        '/coletek/usuarios/ver' => fn() => loadRoute('UserController', "show"),
+        '/coletek/usuarios/pesquisar' => fn() => loadRoute('UserController', "search"),
+        '/coletek/setores/' => fn() => loadRoute('SectorController', "index"),
+        '/coletek/setores/index' => fn() => loadRoute('SectorController', "index"),
+        '/coletek/setores/criar' => fn() => loadRoute('SectorController', "create"),
+        '/coletek/setores/editar' => fn() => loadRoute('SectorController', "edit"),
     ],
     'POST' => [
-        '/testeColtek/usuarios/' => fn() => loadRoute('UserController', "store"),
-        '/testeColtek/usuarios/remover' => fn() => loadRoute('UserController', "delete"),
-        '/testeColtek/usuarios/atualizar' => fn() => loadRoute('UserController', "update"),
-        '/testeColtek/usuarios/vincular' => fn() => loadRoute('UserController', "link"),
-        '/testeColtek/usuarios/desvincular' => fn() => loadRoute('UserController', "unlink"),
-        '/testeColtek/setores/' => fn() => loadRoute('SectorController', "store"),
-        '/testeColtek/setores/remover' => fn() => loadRoute('SectorController', "delete"),
-        '/testeColtek/setores/atualizar' => fn() => loadRoute('SectorController', "update"),
+        '/coletek/usuarios/' => fn() => loadRoute('UserController', "store"),
+        '/coletek/usuarios/remover' => fn() => loadRoute('UserController', "delete"),
+        '/coletek/usuarios/atualizar' => fn() => loadRoute('UserController', "update"),
+        '/coletek/usuarios/vincular' => fn() => loadRoute('UserController', "linkSectors"),
+        '/coletek/usuarios/desvincular' => fn() => loadRoute('UserController', "unlinkSectors"),
+        '/coletek/setores/' => fn() => loadRoute('SectorController', "store"),
+        '/coletek/setores/remover' => fn() => loadRoute('SectorController', "delete"),
+        '/coletek/setores/atualizar' => fn() => loadRoute('SectorController', "update"),
     ],
 ];

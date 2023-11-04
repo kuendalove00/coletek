@@ -2,12 +2,9 @@
 
 namespace app\Services;
 use app\Repositories\UserSectorsRepository;
+use app\Services\Interfaces\IUserSectorsServices;
 
-/**
- *
- * @author ndonge
- */
-class UserSectorsServices {
+class UserSectorsServices implements IUserSectorsServices{
     private $userSectorRepo = NULL;
 
     public function __construct() {
@@ -19,10 +16,32 @@ class UserSectorsServices {
     }
     
     public function addUserSector($data) {
-        return $this->userSectorRepo->insert($data);
+        
+        if(empty($data->sectors))
+        {
+           return;
+        }
+
+        foreach ($data->sectors as $sector_id)
+        {
+            $this->userSectorRepo->insert($data->user_id, $sector_id);    
+        }
+        
+        return;
     }
     
     public function removeUserSector($data) {
-        return $this->userSectorRepo->delete($data);
+        
+        if(empty($data->sector_id))
+        {
+           return;
+        }
+        
+        foreach ($data->sector_id as $sector_id)
+        {
+            $this->userSectorRepo->delete($data->user_id, $sector_id);    
+        }
+        
+        return true;
     }
 }

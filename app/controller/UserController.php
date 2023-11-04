@@ -27,23 +27,31 @@ class UserController{
     
     public function show($id) {
         $user = $this->userServices->getUser($id);
-        $sectors = $this->sectorServices->getAllSectors();
+        $sectors = $this->sectorServices->getNotLinkedSectors($id);
         $userSectors = $this->userSectorServices->getUserSectors($id);
         return Controller::view("user/show",[$user, $sectors, $userSectors]);
     }
     
-    public function link($params) {
-       
-        $sector = $this->userSectorServices->addUserSector($params); 
-        $data = new stdClass();
-        $data->id = $params->user_id;
-        return $this->show($data);
+    public function linkSectors($params) {       
+        $this->userSectorServices->addUserSector($params);
+        return $this->show($this->getUserData($params->user_id));
     }
-    public function unlink($params) {
-        $sector = $this->userSectorServices->removeUserSector($params); 
+    public function unlinkSectors($params) {
+        $this->userSectorServices->removeUserSector($params); 
+        return $this->show($this->getUserData($params->user_id));
+    }
+    
+    public function search($params)
+    {
+        $users = $this->userServices->searchUsersBySector($params);  
+        return Controller::view("user/list",[$users]);
+    }
+
+    private function getUserData($user_id)
+    {
         $data = new stdClass();
-        $data->id = $params->user_id;
-        //return $this->show($data);
+        $data->id = $user_id;
+        return $data;
     }
     
     public function create() {
@@ -51,7 +59,7 @@ class UserController{
     }
     
     public function store($params) {
-        $user = $this->userServices->addUser($params);
+        $this->userServices->addUser($params);
         return $this->create();
     }
     
@@ -61,12 +69,12 @@ class UserController{
     }
     
     public function update($params) {
-        $user = $this->userServices->updateUser($params);
+        $this->userServices->updateUser($params);
         return $this->edit($params);
     }
     
     public function delete($id) {
-        $user = $this->userServices->removeUser($id);
+        $this->userServices->removeUser($id);
         return $this->index();
     }
 }

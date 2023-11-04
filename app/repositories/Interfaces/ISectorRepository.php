@@ -1,22 +1,19 @@
 <?php
 
-
 namespace app\Repositories\Interfaces;
 
-/**
- *
- * @author kuenda
- */
 interface ISectorRepository {
     
     public function selectAll();
 
-    public function selectById($id);
+    public function selectNotLinked($data);
 
-    public function insert($name);
-     
-     public function update($id, $nome);
+    public function selectById($data);
 
-     public function delete($id);
+    public function insert($data);
+
+    public function update($data);
+
+    public function delete($data);
     
 }
